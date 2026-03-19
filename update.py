@@ -1,18 +1,19 @@
-import subprocess
-import os
+import urllib.request
 import re
 
-# ID del canal
 CHANNEL_URL = "https://www.youtube.com/@LaTribu650AM_py/live"
 
 def get_m3u8():
     try:
-        # Intentamos extraer el link HLS directamente con yt-dlp actualizado
-        # Agregamos cookies o headers no son necesarios, pero forzamos el formato
-        cmd = ["yt-dlp", "--no-check-certificates", "--quiet", "--no-warnings", "-g", "-f", "best", CHANNEL_URL]
-        result = subprocess.check_output(cmd).decode("utf-8").strip()
-        if "http" in result:
-            return result
+        # Simulamos un navegador real (User-Agent)
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+        req = urllib.request.Request(CHANNEL_URL, headers=headers)
+        with urllib.request.urlopen(req) as response:
+            html = response.read().decode('utf-8')
+            # Buscamos el link m3u8 en el código fuente
+            found = re.search(r'hlsManifestUrl":"(https://.*?\.m3u8)', html)
+            if found:
+                return found.group(1).replace('\\/', '/')
         return None
     except Exception as e:
         print(f"Error: {e}")
@@ -20,14 +21,13 @@ def get_m3u8():
 
 link = get_m3u8()
 
-# Generamos el archivo siempre para que GitHub Actions no de error
 with open("latribu.m3u8", "w") as f:
     f.write("#EXTM3U\n")
-    if link and "http" in link:
+    if link:
         f.write("#EXT-X-VERSION:3\n")
         f.write("#EXT-X-STREAM-INF:BANDWIDTH=1280000,RESOLUTION=1280x720\n")
         f.write(link + "\n")
     else:
-        f.write("# El canal no esta transmitiendo o hubo un error de extraccion\n")
+        f.write("# Canal offline o link no encontrado\n")
 
-print("Proceso terminado.")
+print("Listo.")
