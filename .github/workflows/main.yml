@@ -9,12 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
       - name: Instalar yt-dlp
         run: |
-          sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
-          sudo chmod a+rx /usr/local/bin/yt-dlp
+          python3 -m pip install -U yt-dlp
+
       - name: Ejecutar Script de Python
-        run: python update.py
+        run: python3 update.py
+
       - name: Guardar cambios y subir
         run: |
           git config --global user.name "GitHub Bot"
