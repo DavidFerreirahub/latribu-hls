@@ -1,2 +1,4 @@
 #EXTM3U
-# Canal offline o link no encontrado - Intenta de nuevo en unos minutos
+#EXT-X-VERSION:3
+#EXT-X-STREAM-INF:BANDWIDTH=1280000,RESOLUTION=1280x720
+https://manifest.googlevideo.com/api/manifest/hls_variant/expire/1778380007/ei/h5j_aaW6Ns2gkucP2oCs8QQ/ip/172.200.183.243/id/ZKTMb5zowuo.1/source/yt_live_broadcast/requiressl/yes/xpc/EgVo2aDSNQ%3D%3D/hfr/1/playlist_duration/30/manifest_duration/30/maudio/1/bui/AbKmrwqP8ZwWoSmCICEHP8qeHk6Tu-uB2ThSgcewTOR_ZomOlZG0cHwOtw5dU_5V4OpnatjXTnxXoBnI/spc/96Xrvw4P4rN9BSJuGGkXVVpq8zRK9bvAkj3CYIWQKCYXl9GC95b7vaAqKPP8bRjAoYJsXw/vprv/1/go/1/ns/1HzfXnrq_IjLLNwd6kDlp_wV/rqh/5/reg/0/pacing/0/nvgoi/1/ncsapi/1/keepalive/yes/fexp/51565116%2C51565682/dover/11/n/xUpFMb6mbY4tH1upYX/itag/0/playlist_type/DVR/sparams/expire%2Cei%2Cip%2Cid%2Csource%2Crequiressl%2Cxpc%2Chfr%2Cplaylist_duration%2Cmanifest_duration%2Cmaudio%2Cbui%2Cspc%2Cvprv%2Cgo%2Cns%2Crqh%2Creg%2Citag%2Cplaylist_type/sig/AHEqNM4wRgIhAIsL7mJqDvgXRuv9dJCKuM79S2Jc-6PnDSC1S0Mfv-dUAiEA2jLc89pA3Z3uE_mhkfWPLGG0eOUCZd2Wax6ZWKozcws%3D/file/index.m3u8
